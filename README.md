@@ -1,8 +1,8 @@
 # wponaws
-PURPOSE:
+# PURPOSE:
 Run Web Server in AWS, alongside wit a MySQL database as a backend
 
-HOWTO:
+# HOWTO:
 0. PREREQUISITE - Contact me for the AWS Credentials
 I. Clone the repository 
 II. Change directory to the wponaws
