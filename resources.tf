@@ -55,10 +55,7 @@ resource "aws_instance" "database" {
 resource "aws_elb" "default" {
   name               = "wordpress-elb"
   subnets            = ["${aws_subnet.public-subnet.id}"]
-#  instances          = [aws_instance.web.id]
-#  instances          = ["${aws_instance.web.*.id}"]
-#  instances          = ["{$aws_instance.web.*.id[count.index]}"]
-  instances          = ["${aws_instance.web[0].id}, ${aws_instance.web[1].id}"]
+  instances          = ["${aws_instance.web[0].id}" , "${aws_instance.web[1].id}"]
 
   security_groups = [
     "${aws_security_group.sgweb.id}",
