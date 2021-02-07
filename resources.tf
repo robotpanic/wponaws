@@ -16,7 +16,7 @@ data "aws_ami" "ubuntu" {
 }
 
 resource "aws_instance" "web" {
-#  count         = 1
+  count         = 2
   ami           = "${data.aws_ami.ubuntu.id}"
   instance_type = "t2.micro"
   subnet_id     = "${aws_subnet.private-subnet.id}"
@@ -58,7 +58,7 @@ resource "aws_elb" "default" {
 #  instances          = [aws_instance.web.id]
 #  instances          = ["${aws_instance.web.*.id}"]
 #  instances          = ["{$aws_instance.web.*.id[count.index]}"]
-  instances          = ["${aws_instance.web.id}"]
+  instances          = ["${aws_instance.web[0].id}, ${aws_instance.web[1].id}"]
 
   security_groups = [
     "${aws_security_group.sgweb.id}",
